@@ -2,7 +2,7 @@ package com.example.android.tropeca.data.model;
 
 public class Place {
     private String placeID;
-    private String placeImage;
+    private byte[] placeImage;
     private String placeName;
     private String placeCategoryID;
     private String placeAddress;
@@ -25,7 +25,7 @@ public class Place {
         return placeID;
     }
 
-    public String getPlaceImage() {
+    public byte[] getPlaceImage() {
         return placeImage;
     }
 
@@ -55,7 +55,7 @@ public class Place {
 
     public static class Builder{
         private String placeID;
-        private String placeImage;
+        private byte[] placeImage;
         private String placeName;
         private String placeCategoryID;
         private String placeAddress;
@@ -68,7 +68,7 @@ public class Place {
             return this;
         }
 
-        public Builder setPlaceImage(String placeImage) {
+        public Builder setPlaceImage(byte[] placeImage) {
             this.placeImage = placeImage;
             return this;
         }

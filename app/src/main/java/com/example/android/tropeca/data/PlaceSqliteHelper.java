@@ -20,9 +20,9 @@ public class PlaceSqliteHelper extends SQLiteOpenHelper {
                     + DBUtitls.PLACE_COL_NAME + " " + DBUtitls.TEXT_DATA_TYPE + " " + DBUtitls.NOT_NULL + ", "
                     + DBUtitls.PLACE_COL_ADDRESS + " " + DBUtitls.TEXT_DATA_TYPE + " " + DBUtitls.NOT_NULL + ", "
                     + DBUtitls.PLACE_COL_DESCRIPTION + " " + DBUtitls.TEXT_DATA_TYPE + " " + DBUtitls.NOT_NULL + ", "
-                    + DBUtitls.PLACE_COL_IMAGE + " " + DBUtitls.TEXT_DATA_TYPE + " " + DBUtitls.NOT_NULL + ", "
-                    + DBUtitls.PLACE_COL_LAT + " " + DBUtitls.TEXT_DATA_TYPE + " " + DBUtitls.NOT_NULL + ", "
-                    + DBUtitls.PLACE_COL_LNG + " " + DBUtitls.TEXT_DATA_TYPE + " " + DBUtitls.NOT_NULL
+                    + DBUtitls.PLACE_COL_IMAGE + " " + DBUtitls.BLOB_DATA_TYPE + " " + DBUtitls.NOT_NULL + ", "
+                    + DBUtitls.PLACE_COL_LAT + " " + DBUtitls.REAL_DATA_TYPE + " " + DBUtitls.NOT_NULL + ", "
+                    + DBUtitls.PLACE_COL_LNG + " " + DBUtitls.REAL_DATA_TYPE + " " + DBUtitls.NOT_NULL
             + ")";
 
     private static final String CREATE_CATEGORY_TBL_SQL =
@@ -35,9 +35,9 @@ public class PlaceSqliteHelper extends SQLiteOpenHelper {
             "INSERT INTO " + DBUtitls.CATEGORY_TBL_NAME + "(" + DBUtitls.CATEGORY_COL_ID + ", " + DBUtitls.CATEGORY_COL_NAME + ")"
             + "VALUES "
             + "('0', 'Quán Cà phê'), "
-            + "('1', 'Sân chơi pets'), "
+            + "('1', 'Công viên'), "
             + "('2', 'Cửa hàng Pets'), "
-            + "('3', 'Công viên')";
+            + "('3', 'Sân chơi pets')";
 
     public PlaceSqliteHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

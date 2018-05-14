@@ -83,9 +83,9 @@ public class PlaceRepo {
                 String placeName = cursor.getString(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_NAME));
                 String placeAdress = cursor.getString(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_ADDRESS));
                 String placeDescription = cursor.getString(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_DESCRIPTION));
-                String placeImage = cursor.getString(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_IMAGE));
-                Double placeLat = cursor.getDouble(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_LAT));
-                Double placeLng = cursor.getDouble(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_LNG));
+                byte[] placeImage = cursor.getBlob(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_IMAGE));
+                double placeLat = cursor.getDouble(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_LAT));
+                double placeLng = cursor.getDouble(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_LNG));
 
                 Place place = new Place.Builder()
                         .setPlaceID(placeID)
@@ -137,9 +137,9 @@ public class PlaceRepo {
             String placeName = cursor.getString(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_NAME));
             String placeAdress = cursor.getString(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_ADDRESS));
             String placeDescription = cursor.getString(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_DESCRIPTION));
-            String placeImage = cursor.getString(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_IMAGE));
-            Double placeLat = cursor.getDouble(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_LAT));
-            Double placeLng = cursor.getDouble(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_LNG));
+            byte[] placeImage = cursor.getBlob(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_IMAGE));
+            double placeLat = cursor.getDouble(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_LAT));
+            double placeLng = cursor.getDouble(cursor.getColumnIndexOrThrow(DBUtitls.PLACE_COL_LNG));
 
             place = new Place.Builder()
                     .setPlaceID(placeID)
