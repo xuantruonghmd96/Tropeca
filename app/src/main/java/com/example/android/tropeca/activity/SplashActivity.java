@@ -1,5 +1,6 @@
-package com.example.android.tropeca;
+package com.example.android.tropeca.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,7 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import com.example.android.tropeca.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,9 +46,10 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(), "Hello", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SplashActivity.this, CategoryActivity.class));
+                finish();
             }
-        }, 3000);
+        }, 1000);
     }
 
     @Override
