@@ -13,4 +13,7 @@
     <string name="warning_delete">Xác nhận xóa?</string>
     <string name="deleting">Đang xóa &#8230;</string>
     <string name="saving">Đang lưu &#8230;</string>
+    <string name="text_positive">Đồng ý</string>
+    <string name="text_negative">Không</string>
+    <string name="api_key">AIzaSyA1oZSKbPSKIojy2ot4p0ynknYWgz8Z_vQ</string>
 </resources>

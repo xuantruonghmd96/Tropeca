@@ -1,6 +1,9 @@
 package com.example.android.tropeca.activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
@@ -9,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.android.tropeca.ActivityUtils;
 import com.example.android.tropeca.R;
@@ -33,6 +37,7 @@ public class DetailActivity extends AppCompatActivity {
     private String placeID;
 //    private String categoryID;
     private PlaceRepo placeRepo;
+    private Place place;
     private ProgressDialog progressDialog;
 
     @Override
@@ -52,7 +57,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void setPlace(){
-        final Place place = placeRepo.getPlace(placeID);
+        place = placeRepo.getPlace(placeID);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -80,12 +85,39 @@ public class DetailActivity extends AppCompatActivity {
 
     @OnClick(R.id.iBtnDetailAct_Delete)
     public void deletePlace(View view){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(DetailActivity.this);
+        alertDialog.setTitle(getResources().getString(R.string.warning_delete));
+        alertDialog.setIcon(R.drawable.logo);
+        alertDialog.setMessage(
+                getResources().getString(R.string.warning_delete)
+                + " '"
+                + place.getPlaceName()
+                + "' ?"
+        );
 
+        alertDialog.setPositiveButton(getResources().getString(R.string.text_positive),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        placeRepo.delete(placeID);
+                    }
+                });
+        alertDialog.setNegativeButton(getResources().getString(R.string.text_negative),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.
+                    }
+                });
+        alertDialog.show();
     }
 
     @OnClick(R.id.iBtnDetailAct_edit)
     public void editPlace(View view){
-
+        Intent addEditActInternt = new Intent(DetailActivity.this, AddEditActivity.class);
+        addEditActInternt.putExtra(ActivityUtils.PLACE_KEY_PUT_EXTRA, place.getPlaceID());
+        addEditActInternt.putExtra(ActivityUtils.CATEGORY_KEY_PUT_EXTRA, place.getPlaceCategoryID());
+        startActivity(addEditActInternt);
     }
 
     @OnClick(R.id.iBtnDetailAct_direct)

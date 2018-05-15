@@ -87,16 +87,19 @@ public class PlaceActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Place place = places.get(position);
-                Intent detailActInternt = new Intent(PlaceActivity.this, DetailActivity.class);
-                detailActInternt.putExtra(ActivityUtils.PLACE_KEY_PUT_EXTRA, place.getPlaceID());
-                startActivity(detailActInternt);
+                Intent detailActIntent = new Intent(PlaceActivity.this, DetailActivity.class);
+                detailActIntent.putExtra(ActivityUtils.PLACE_KEY_PUT_EXTRA, place.getPlaceID());
+//                detailActIntent.putExtra(ActivityUtils.CATEGORY_KEY_PUT_EXTRA, place.getPlaceCategoryID());
+                startActivity(detailActIntent);
             }
         });
     }
 
     @OnClick(R.id.fabPlacesAct_AddNewPlace)
     public void addNewPlace(View view){
-
+        Intent addEditActIntent = new Intent(PlaceActivity.this, AddEditActivity.class);
+        addEditActIntent.putExtra(ActivityUtils.CATEGORY_KEY_PUT_EXTRA, categoryID);
+        startActivity(addEditActIntent);
     }
 
     @OnClick(R.id.btnPlacesAct_ShowAllOnMap)

@@ -1,5 +1,7 @@
 package com.example.android.tropeca.data.model;
 
+import android.text.TextUtils;
+
 public class Place {
     private String placeID;
     private byte[] placeImage;
@@ -10,7 +12,7 @@ public class Place {
     private double placeLat;
     private double placeLng;
 
-    public Place(Builder builder){
+    public Place(Builder builder) {
         this.placeID = builder.placeID;
         this.placeAddress = builder.placeAddress;
         this.placeCategoryID = builder.placeCategoryID;
@@ -53,7 +55,7 @@ public class Place {
         return placeLng;
     }
 
-    public static class Builder{
+    public static class Builder {
         private String placeID;
         private byte[] placeImage;
         private String placeName;
@@ -103,8 +105,12 @@ public class Place {
             return this;
         }
 
-        public Place build(){
+        public Place build() {
             return new Place(this);
         }
+    }
+
+    static public boolean validateInput(String placeName, String placeAddress, String placeDescription, String placeCategoryID) {
+        return (TextUtils.isEmpty(placeName) || TextUtils.isEmpty(placeAddress) || TextUtils.isEmpty(placeDescription) || TextUtils.isEmpty(placeCategoryID)) ? false : true;
     }
 }
