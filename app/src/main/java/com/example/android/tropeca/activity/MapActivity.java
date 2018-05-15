@@ -33,6 +33,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.android.PolyUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,9 +141,10 @@ public class MapActivity extends AppCompatActivity implements
             @Override
             public void onResponse(Call<DirectionRoot> call, Response<DirectionRoot> response) {
                 DirectionRoot directionRoot = response.body();
-                String polylines = directionRoot.getRoutes().get(0).getOverview_Polyline().getPoints();
+                String polylines = directionRoot.getRoutes().get(0).getOverview_polyline().getPoints();
 
-                Log.d("Test", polylines);
+                List<LatLng> decodedPath = PolyUtil.decode(polylines);
+                googleMap.addPolyline(new PolylineOptions().addAll(decodedPath));
             }
 
             @Override
@@ -187,7 +190,7 @@ public class MapActivity extends AppCompatActivity implements
     @Override
     public void onMapReady(final GoogleMap googleMap) {
         this.googleMap = googleMap;
-//        this.googleMap.setOnMarkerClickListener(this);
+        this.googleMap.setOnMarkerClickListener(this);
         displayPlacesOnMap();
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             buildApiClient();
@@ -200,7 +203,7 @@ public class MapActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
+    public void onConnected(@Nullable Bundle bundle)  {
         locationRequest = new LocationRequest();
         locationRequest.setInterval(1000);
         locationRequest.setFastestInterval(1000);
