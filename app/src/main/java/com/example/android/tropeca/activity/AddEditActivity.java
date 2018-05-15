@@ -19,9 +19,9 @@ import com.example.android.tropeca.ActivityUtils;
 import com.example.android.tropeca.R;
 import com.example.android.tropeca.data.PlaceRepo;
 import com.example.android.tropeca.data.model.Place;
-import com.example.android.tropeca.map.service.ServiceAPI;
-import com.example.android.tropeca.map.service.pojo.GeocodingRoot;
-import com.example.android.tropeca.map.service.pojo.Location;
+import com.example.android.tropeca.map.ServiceAPI;
+import com.example.android.tropeca.map.geocoding.GeocodingRoot;
+import com.example.android.tropeca.map.geocoding.Location;
 
 import java.io.ByteArrayOutputStream;
 import java.util.UUID;
@@ -96,11 +96,11 @@ public class AddEditActivity extends AppCompatActivity {
         placeRepo = PlaceRepo.getInstance(this);
         initRetrofit();
         initProgressDialog();
-        setPlace(placeID, categoryID);
 
         // Kiem tra edit
         if (placeID != null){
             hasImage = true;
+            setPlace(placeID, categoryID);
         }
     }
 

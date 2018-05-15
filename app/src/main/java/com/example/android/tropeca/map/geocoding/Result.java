@@ -1,4 +1,4 @@
-package com.example.android.tropeca.map.service.pojo;
+package com.example.android.tropeca.map.geocoding;
 
 public class Result {
 

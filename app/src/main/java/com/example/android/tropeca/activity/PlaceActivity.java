@@ -49,6 +49,8 @@ public class PlaceActivity extends AppCompatActivity {
         init();
     }
 
+
+
     private void init(){
         categoryID = getIntent().getStringExtra(ActivityUtils.CATEGORY_KEY_PUT_EXTRA);
         placeRepo = PlaceRepo.getInstance(this);
@@ -104,6 +106,8 @@ public class PlaceActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnPlacesAct_ShowAllOnMap)
     public void showAllOnMap(View view){
-
+        Intent mapActIntent = new Intent(PlaceActivity.this, MapActivity.class);
+        mapActIntent.putExtra(ActivityUtils.CATEGORY_KEY_PUT_EXTRA, categoryID);
+        startActivity(mapActIntent);
     }
 }
